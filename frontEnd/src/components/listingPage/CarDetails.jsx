@@ -2,12 +2,14 @@ import Spinner from "react-bootstrap/Spinner";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 const CarDetails = () => {
+  const apiUrl = import.meta.env.VITE_API_URL;
+
   const { id } = useParams();
   const [carObj, setCarObj] = useState({});
   const [loading, setLoading] = useState(true);
   const fetchCar = async () => {
     try {
-      const response = await fetch(`http://localhost:5000/api/cars/${id}`);
+      const response = await fetch(`${apiUrl}/api/cars/${id}`);
       const data = await response.json();
       setCarObj(data);
       setLoading(false);

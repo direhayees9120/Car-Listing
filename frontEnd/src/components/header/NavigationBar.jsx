@@ -7,7 +7,7 @@ import Navbar from "react-bootstrap/Navbar";
 import NavDropdown from "react-bootstrap/NavDropdown";
 import { useNavigate } from "react-router-dom";
 
-function Navigationbar() {
+function NavigationBar() {
   const navigate = useNavigate(); // navigate to other pages
   // get authToken and loginUser from local storage
   const authToken = localStorage.getItem("authToken");
@@ -66,10 +66,10 @@ function Navigationbar() {
   );
 }
 
-Navigationbar.propTypes = {
+NavigationBar.propTypes = {
   authToken: PropTypes.string,
   loginUser: PropTypes.object,
   setAuthToken: PropTypes.func,
   setLoginUser: PropTypes.func,
 };
-export default Navigationbar;
+export default NavigationBar;

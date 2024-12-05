@@ -3,6 +3,7 @@ import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import { useNavigate } from "react-router-dom";
 
+
 function Register() {
   // styles
   const styles = {
@@ -44,7 +45,8 @@ function Register() {
       password: "",
     });
   };
-
+  
+  const apiUrl = import.meta.env.VITE_API_URL;
   // handle form submit
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -53,7 +55,7 @@ function Register() {
 
     // send data to backend
     try {
-      const response = await fetch("http://localhost:5020/api/auth/signup", {
+      const response = await fetch(`${apiUrl}//api/auth/signup`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

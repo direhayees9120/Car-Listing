@@ -2,6 +2,9 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import CarCard from "./CarCard";
 import Spinner from "react-bootstrap/Spinner";
+hj
+const apiUrl = import.meta.env.VITE_API_URL;
+
 const Listing = () => {
   const styles = {
     grid: {
@@ -11,6 +14,7 @@ const Listing = () => {
     },
   };
   // navigate to other pages
+  const apiUrl = import.meta.env.VITE_API_URL;
   const navigate = useNavigate();
   // state
   const [cars, setCars] = useState([]);
@@ -18,7 +22,7 @@ const Listing = () => {
   // handle fetch cars from api
   const fetchCars = async () => {
     try {
-      const response = await fetch("http://localhost:5020/api/cars");
+      const response = await fetch(`${apiUrl}/api/cars`);
       const data = await response.json();
       setCars(data);
       setLoading(false);
@@ -33,7 +37,7 @@ const Listing = () => {
         const openCarDetails = (id) => {
           navigate(`/car-details/${id}`);
           // Make a request to the backend to retrieve the car details
-          fetch(`http://localhost:5020/api/cars/${id}`)
+          fetch(`${apiUrl}/api/cars/${id}`)
             .then((response) => response.json())
             .then((data) => {
               // Update the state with the car details
@@ -54,7 +58,7 @@ const Listing = () => {
   const openCarDetails = (id) => {
     navigate(`/car-details/${id}`);
      // Make a request to the backend to retrieve the car details
-  fetch(`http://localhost:5020/api/cars/${id}`)
+  fetch(`${apiUrl}/api/cars/${id}`)
   .then((response) => response.json())
   .then((data) => {
     // Update the state with the car details

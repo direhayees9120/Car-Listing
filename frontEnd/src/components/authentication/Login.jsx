@@ -4,6 +4,8 @@ import Form from "react-bootstrap/Form";
 import Spinner from "react-bootstrap/Spinner";
 import { useNavigate } from "react-router-dom";
 
+
+
 function Login() {
   // styles
   const styles = {
@@ -42,7 +44,7 @@ function Login() {
       password: "",
     });
   };
-
+  const apiUrl = import.meta.env.VITE_API_URL;
   // handle form submit
   const handleSubmit = async (e) => {
     setProcessing(true);
@@ -50,7 +52,7 @@ function Login() {
 
     // send data to backend
     try {
-      const response = await fetch("http://localhost:5020/api/auth/login", {
+      const response = await fetch(`${apiUrl}/api/auth/login`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

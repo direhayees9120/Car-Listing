@@ -30,6 +30,7 @@ function AddCar() {
   });
   const [processing, setProcessing] = useState(false);
   // handle form data change
+  
   const handleFormDataChange = (e) => {
     if (e.target.id === "pictures") {
       const splitted = e.target.value.split(",");
@@ -52,15 +53,18 @@ function AddCar() {
       postedBy: "",
     });
   };
-  // handle form submit
+  // handle form submit 
+  // const apiUrl = import.meta.env.VITE_API_URL;
   const authToken = localStorage.getItem("authToken");
+
+  const apiUrl = import.meta.env.VITE_API_URL;
   const handleSubmit = async (e) => {
     setProcessing(true);
     e.preventDefault();
     console.log(formData);
     // send data to backend
     try {
-      const response = await fetch("http://localhost:5020/api/cars/addcar", {
+      const response = await fetch(`${apiUrl}/api/cars/addcar`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
